@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Housing Price Prediction Model</title>
+	<script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/fontawesome.css') }}">
+	<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>	
+	<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+		<h1 class="text-center"> Ames Housing dataset - Housing Price Prediction</h1>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 text-center">
+				{% if result %}
+					<h3>Price of the House You Looking For: </h3>
+					<p>&nbsp;</p>
+					<h1>$ {{ result }} (approx.)</h1>
+				{% endif %}
+			</div>
+			<div class="col-lg-6">				
+				<form action="{{url_for('predict') }}" method="post">
+					<div class="row">
+						<div class="col-lg-9">
+							<div class="form-group">
+								<label class="form-check-label">Lot Size (in square feet)</label>
+								<input type="text" class="form-control" name="LotSize">
+							</div>
+						</div>
+						<div class="col-lg-3">									
+							<div class="form-group">
+								<label class="form-check-label">Year Built</label>
+								<input type="text"  class="form-control"  name="YearBuilt" max="4">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-6">									
+							<div class="form-group">
+								<label class="form-check-label">First Floor square feet</label>
+								<input type="text"  class="form-control"  name="FlSF1st">
+							</div>
+						</div>
+						<div class="col-lg-6">							
+							<div class="form-group">
+								<label class="form-check-label">Second floor square feet</label>
+								<input type="text"  class="form-control" name="FlrSF2nd">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="form-check-label"> Full bathrooms above grade</label>
+						<input type="text" class="form-control" name="FullBath">
+					</div>
+					<div class="form-group">
+						<label class="form-check-label">Bedrooms above grade (does NOT include basement bedrooms)</label>
+						<input type="text" class="form-control" name="BedroomAbvGr">
+					</div>
+					<div class="form-group">
+						<label class="form-check-label">Total rooms above grade (does not include bathrooms)</label>
+						<input type="text" class="form-control" name="TotRmsAbvGrd">
+					</div>
+					<div class="form-group">
+						<input type="submit" class="form-control btn btn-primary">
+					</div>	
+				</form>		
+			</div>
+		</div>
+	</div>
+</body>
+</html>
