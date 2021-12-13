@@ -1,0 +1,17 @@
+table.table tr td:not(:first){
+	color:red;
+}
+.jumbotron{
+	background-image: linear-gradient(to top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+	color:#FFFFFF;
+		                 
+}
+#content{
+		width: 60%;
+	}
+
+@media screen and (max-width: 700px) {
+	#content{
+		width: 100%;
+	}
+}
